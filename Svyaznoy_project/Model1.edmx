@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Svyaznoy_projectModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ClientSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="MiddleName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ConsultSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdSotrudnik" Type="int" Nullable="false" />
+          <Property Name="TypeConsult" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SellsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdSotrudnik" Type="int" Nullable="false" />
+          <Property Name="Tovar" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TypeTovar" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Garant" Type="int" />
+        </EntityType>
+        <EntityType Name="SotrudnikSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="MiddleName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_ConsultSet_ClientSet">
+          <End Role="ClientSet" Type="Self.ClientSet" Multiplicity="1" />
+          <End Role="ConsultSet" Type="Self.ConsultSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsultSet">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsultSet_SotrudnikSet">
+          <End Role="SotrudnikSet" Type="Self.SotrudnikSet" Multiplicity="1" />
+          <End Role="ConsultSet" Type="Self.ConsultSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SotrudnikSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsultSet">
+              <PropertyRef Name="IdSotrudnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellsSet_ClientSet">
+          <End Role="ClientSet" Type="Self.ClientSet" Multiplicity="1" />
+          <End Role="SellsSet" Type="Self.SellsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SellsSet">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellsSet_SotrudnikSet">
+          <End Role="SotrudnikSet" Type="Self.SotrudnikSet" Multiplicity="1" />
+          <End Role="SellsSet" Type="Self.SellsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SotrudnikSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SellsSet">
+              <PropertyRef Name="IdSotrudnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Svyaznoy_projectModelContainer">
+          <EntitySet Name="ClientSet" EntityType="Self.ClientSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConsultSet" EntityType="Self.ConsultSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SellsSet" EntityType="Self.SellsSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SotrudnikSet" EntityType="Self.SotrudnikSet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ConsultSet_ClientSet" Association="Self.FK_ConsultSet_ClientSet">
+            <End Role="ClientSet" EntitySet="ClientSet" />
+            <End Role="ConsultSet" EntitySet="ConsultSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsultSet_SotrudnikSet" Association="Self.FK_ConsultSet_SotrudnikSet">
+            <End Role="SotrudnikSet" EntitySet="SotrudnikSet" />
+            <End Role="ConsultSet" EntitySet="ConsultSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellsSet_ClientSet" Association="Self.FK_SellsSet_ClientSet">
+            <End Role="ClientSet" EntitySet="ClientSet" />
+            <End Role="SellsSet" EntitySet="SellsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellsSet_SotrudnikSet" Association="Self.FK_SellsSet_SotrudnikSet">
+            <End Role="SotrudnikSet" EntitySet="SotrudnikSet" />
+            <End Role="SellsSet" EntitySet="SellsSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Svyaznoy_projectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ClientSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ConsultSet" Relationship="Self.FK_ConsultSet_ClientSet" FromRole="ClientSet" ToRole="ConsultSet" />
+          <NavigationProperty Name="SellsSet" Relationship="Self.FK_SellsSet_ClientSet" FromRole="ClientSet" ToRole="SellsSet" />
+        </EntityType>
+        <EntityType Name="ConsultSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="IdSotrudnik" Type="Int32" Nullable="false" />
+          <Property Name="TypeConsult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ClientSet" Relationship="Self.FK_ConsultSet_ClientSet" FromRole="ConsultSet" ToRole="ClientSet" />
+          <NavigationProperty Name="SotrudnikSet" Relationship="Self.FK_ConsultSet_SotrudnikSet" FromRole="ConsultSet" ToRole="SotrudnikSet" />
+        </EntityType>
+        <EntityType Name="SellsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="IdSotrudnik" Type="Int32" Nullable="false" />
+          <Property Name="Tovar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeTovar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Garant" Type="Int32" />
+          <NavigationProperty Name="ClientSet" Relationship="Self.FK_SellsSet_ClientSet" FromRole="SellsSet" ToRole="ClientSet" />
+          <NavigationProperty Name="SotrudnikSet" Relationship="Self.FK_SellsSet_SotrudnikSet" FromRole="SellsSet" ToRole="SotrudnikSet" />
+        </EntityType>
+        <EntityType Name="SotrudnikSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ConsultSet" Relationship="Self.FK_ConsultSet_SotrudnikSet" FromRole="SotrudnikSet" ToRole="ConsultSet" />
+          <NavigationProperty Name="SellsSet" Relationship="Self.FK_SellsSet_SotrudnikSet" FromRole="SotrudnikSet" ToRole="SellsSet" />
+        </EntityType>
+        <Association Name="FK_ConsultSet_ClientSet">
+          <End Role="ClientSet" Type="Self.ClientSet" Multiplicity="1" />
+          <End Role="ConsultSet" Type="Self.ConsultSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsultSet">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellsSet_ClientSet">
+          <End Role="ClientSet" Type="Self.ClientSet" Multiplicity="1" />
+          <End Role="SellsSet" Type="Self.SellsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SellsSet">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsultSet_SotrudnikSet">
+          <End Role="SotrudnikSet" Type="Self.SotrudnikSet" Multiplicity="1" />
+          <End Role="ConsultSet" Type="Self.ConsultSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SotrudnikSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsultSet">
+              <PropertyRef Name="IdSotrudnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellsSet_SotrudnikSet">
+          <End Role="SotrudnikSet" Type="Self.SotrudnikSet" Multiplicity="1" />
+          <End Role="SellsSet" Type="Self.SellsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SotrudnikSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SellsSet">
+              <PropertyRef Name="IdSotrudnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Svyaznoy_projectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ClientSet" EntityType="Self.ClientSet" />
+          <EntitySet Name="ConsultSet" EntityType="Self.ConsultSet" />
+          <EntitySet Name="SellsSet" EntityType="Self.SellsSet" />
+          <EntitySet Name="SotrudnikSet" EntityType="Self.SotrudnikSet" />
+          <AssociationSet Name="FK_ConsultSet_ClientSet" Association="Self.FK_ConsultSet_ClientSet">
+            <End Role="ClientSet" EntitySet="ClientSet" />
+            <End Role="ConsultSet" EntitySet="ConsultSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellsSet_ClientSet" Association="Self.FK_SellsSet_ClientSet">
+            <End Role="ClientSet" EntitySet="ClientSet" />
+            <End Role="SellsSet" EntitySet="SellsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsultSet_SotrudnikSet" Association="Self.FK_ConsultSet_SotrudnikSet">
+            <End Role="SotrudnikSet" EntitySet="SotrudnikSet" />
+            <End Role="ConsultSet" EntitySet="ConsultSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellsSet_SotrudnikSet" Association="Self.FK_SellsSet_SotrudnikSet">
+            <End Role="SotrudnikSet" EntitySet="SotrudnikSet" />
+            <End Role="SellsSet" EntitySet="SellsSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Svyaznoy_projectModelContainer" CdmEntityContainer="Svyaznoy_projectEntities">
+          <EntitySetMapping Name="ClientSet">
+            <EntityTypeMapping TypeName="Svyaznoy_projectModel.ClientSet">
+              <MappingFragment StoreEntitySet="ClientSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConsultSet">
+            <EntityTypeMapping TypeName="Svyaznoy_projectModel.ConsultSet">
+              <MappingFragment StoreEntitySet="ConsultSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="IdSotrudnik" ColumnName="IdSotrudnik" />
+                <ScalarProperty Name="TypeConsult" ColumnName="TypeConsult" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SellsSet">
+            <EntityTypeMapping TypeName="Svyaznoy_projectModel.SellsSet">
+              <MappingFragment StoreEntitySet="SellsSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="IdSotrudnik" ColumnName="IdSotrudnik" />
+                <ScalarProperty Name="Tovar" ColumnName="Tovar" />
+                <ScalarProperty Name="TypeTovar" ColumnName="TypeTovar" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Garant" ColumnName="Garant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SotrudnikSet">
+            <EntityTypeMapping TypeName="Svyaznoy_projectModel.SotrudnikSet">
+              <MappingFragment StoreEntitySet="SotrudnikSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

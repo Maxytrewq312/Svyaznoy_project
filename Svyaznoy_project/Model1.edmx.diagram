@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="63811d8147354b4ab66785aa708a51dc" Name="Diagram1">
+        <EntityTypeShape EntityType="Svyaznoy_projectModel.ClientSet" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Svyaznoy_projectModel.ConsultSet" Width="1.5" PointX="7.875" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Svyaznoy_projectModel.SellsSet" Width="1.5" PointX="9" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Svyaznoy_projectModel.SotrudnikSet" Width="1.5" PointX="3.125" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="Svyaznoy_projectModel.FK_ConsultSet_ClientSet" ManuallyRouted="false" />
+        <AssociationConnector Association="Svyaznoy_projectModel.FK_SellsSet_ClientSet" ManuallyRouted="false" />
+        <AssociationConnector Association="Svyaznoy_projectModel.FK_ConsultSet_SotrudnikSet" ManuallyRouted="false" />
+        <AssociationConnector Association="Svyaznoy_projectModel.FK_SellsSet_SotrudnikSet" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
