@@ -18,6 +18,9 @@ namespace Svyaznoy_project
         public int IdClient { get; set; }
         public int IdSotrudnik { get; set; }
         public string TypeConsult { get; set; }
+        public string MobileConsult { get; set; }
+        public string AcsessConsult { get; set; }
+        public string OperConsult { get; set; }
     
         public virtual ClientSet ClientSet { get; set; }
         public virtual SotrudnikSet SotrudnikSet { get; set; }

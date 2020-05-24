@@ -8,6 +8,7 @@ namespace Svyaznoy_project
 {
     static class Program
     {
+        public static Svyaznoy_projectEntities2 SpDb = new Svyaznoy_projectEntities2();
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>

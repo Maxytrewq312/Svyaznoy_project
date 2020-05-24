@@ -13,10 +13,10 @@ namespace Svyaznoy_project
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Svyaznoy_projectEntities : DbContext
+    public partial class Svyaznoy_projectEntities2 : DbContext
     {
-        public Svyaznoy_projectEntities()
-            : base("name=Svyaznoy_projectEntities")
+        public Svyaznoy_projectEntities2()
+            : base("name=Svyaznoy_projectEntities2")
         {
         }
     

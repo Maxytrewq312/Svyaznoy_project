@@ -24,6 +24,9 @@
           <Property Name="IdClient" Type="int" Nullable="false" />
           <Property Name="IdSotrudnik" Type="int" Nullable="false" />
           <Property Name="TypeConsult" Type="nvarchar(max)" />
+          <Property Name="MobileConsult" Type="nvarchar(max)" />
+          <Property Name="AcsessConsult" Type="nvarchar(max)" />
+          <Property Name="OperConsult" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="SellsSet">
           <Key>
@@ -32,8 +35,10 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdClient" Type="int" Nullable="false" />
           <Property Name="IdSotrudnik" Type="int" Nullable="false" />
-          <Property Name="Tovar" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="TypeTovar" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TypeTovar" Type="int" Nullable="false" />
+          <Property Name="ModelMobile" Type="nvarchar(max)" />
+          <Property Name="NameAcsess" Type="nvarchar(max)" />
+          <Property Name="NameOper" Type="nvarchar(max)" />
           <Property Name="Price" Type="int" Nullable="false" />
           <Property Name="Garant" Type="int" />
         </EntityType>
@@ -143,6 +148,9 @@
           <Property Name="IdClient" Type="Int32" Nullable="false" />
           <Property Name="IdSotrudnik" Type="Int32" Nullable="false" />
           <Property Name="TypeConsult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MobileConsult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AcsessConsult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OperConsult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ClientSet" Relationship="Self.FK_ConsultSet_ClientSet" FromRole="ConsultSet" ToRole="ClientSet" />
           <NavigationProperty Name="SotrudnikSet" Relationship="Self.FK_ConsultSet_SotrudnikSet" FromRole="ConsultSet" ToRole="SotrudnikSet" />
         </EntityType>
@@ -153,8 +161,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdClient" Type="Int32" Nullable="false" />
           <Property Name="IdSotrudnik" Type="Int32" Nullable="false" />
-          <Property Name="Tovar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TypeTovar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeTovar" Type="Int32" Nullable="false" />
+          <Property Name="ModelMobile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NameAcsess" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NameOper" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Int32" Nullable="false" />
           <Property Name="Garant" Type="Int32" />
           <NavigationProperty Name="ClientSet" Relationship="Self.FK_SellsSet_ClientSet" FromRole="SellsSet" ToRole="ClientSet" />
@@ -220,7 +230,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Svyaznoy_projectEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Svyaznoy_projectEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ClientSet" EntityType="Self.ClientSet" />
           <EntitySet Name="ConsultSet" EntityType="Self.ConsultSet" />
           <EntitySet Name="SellsSet" EntityType="Self.SellsSet" />
@@ -247,7 +257,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище Svyaznoy_projectModelContainer" CdmEntityContainer="Svyaznoy_projectEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Svyaznoy_projectModelContainer" CdmEntityContainer="Svyaznoy_projectEntities2">
           <EntitySetMapping Name="ClientSet">
             <EntityTypeMapping TypeName="Svyaznoy_projectModel.ClientSet">
               <MappingFragment StoreEntitySet="ClientSet">
@@ -267,6 +277,9 @@
                 <ScalarProperty Name="IdClient" ColumnName="IdClient" />
                 <ScalarProperty Name="IdSotrudnik" ColumnName="IdSotrudnik" />
                 <ScalarProperty Name="TypeConsult" ColumnName="TypeConsult" />
+                <ScalarProperty Name="MobileConsult" ColumnName="MobileConsult" />
+                <ScalarProperty Name="AcsessConsult" ColumnName="AcsessConsult" />
+                <ScalarProperty Name="OperConsult" ColumnName="OperConsult" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -276,8 +289,10 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdClient" ColumnName="IdClient" />
                 <ScalarProperty Name="IdSotrudnik" ColumnName="IdSotrudnik" />
-                <ScalarProperty Name="Tovar" ColumnName="Tovar" />
                 <ScalarProperty Name="TypeTovar" ColumnName="TypeTovar" />
+                <ScalarProperty Name="ModelMobile" ColumnName="ModelMobile" />
+                <ScalarProperty Name="NameAcsess" ColumnName="NameAcsess" />
+                <ScalarProperty Name="NameOper" ColumnName="NameOper" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Garant" ColumnName="Garant" />
               </MappingFragment>

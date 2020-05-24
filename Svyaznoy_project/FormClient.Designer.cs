@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.listViewClient = new System.Windows.Forms.ListView();
+            this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Имя = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Фамилия = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Отчество = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Телефон = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Адрес = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.labelFirstName = new System.Windows.Forms.Label();
             this.labelMiddleName = new System.Windows.Forms.Label();
             this.labelLastName = new System.Windows.Forms.Label();
@@ -39,12 +45,6 @@
             this.textBoxLastName = new System.Windows.Forms.TextBox();
             this.textBoxPhone = new System.Windows.Forms.TextBox();
             this.textBoxAddress = new System.Windows.Forms.TextBox();
-            this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Имя = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Фамилия = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Отчество = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Телефон = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Адрес = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDel = new System.Windows.Forms.Button();
@@ -62,93 +62,14 @@
             this.listViewClient.FullRowSelect = true;
             this.listViewClient.GridLines = true;
             this.listViewClient.HideSelection = false;
-            this.listViewClient.Location = new System.Drawing.Point(241, 61);
+            this.listViewClient.Location = new System.Drawing.Point(243, 23);
             this.listViewClient.MultiSelect = false;
             this.listViewClient.Name = "listViewClient";
             this.listViewClient.Size = new System.Drawing.Size(556, 311);
             this.listViewClient.TabIndex = 0;
             this.listViewClient.UseCompatibleStateImageBehavior = false;
             this.listViewClient.View = System.Windows.Forms.View.Details;
-            // 
-            // labelFirstName
-            // 
-            this.labelFirstName.AutoSize = true;
-            this.labelFirstName.Location = new System.Drawing.Point(32, 61);
-            this.labelFirstName.Name = "labelFirstName";
-            this.labelFirstName.Size = new System.Drawing.Size(29, 13);
-            this.labelFirstName.TabIndex = 1;
-            this.labelFirstName.Text = "Имя";
-            // 
-            // labelMiddleName
-            // 
-            this.labelMiddleName.AutoSize = true;
-            this.labelMiddleName.Location = new System.Drawing.Point(32, 130);
-            this.labelMiddleName.Name = "labelMiddleName";
-            this.labelMiddleName.Size = new System.Drawing.Size(56, 13);
-            this.labelMiddleName.TabIndex = 2;
-            this.labelMiddleName.Text = "Фамилия";
-            // 
-            // labelLastName
-            // 
-            this.labelLastName.AutoSize = true;
-            this.labelLastName.Location = new System.Drawing.Point(34, 196);
-            this.labelLastName.Name = "labelLastName";
-            this.labelLastName.Size = new System.Drawing.Size(54, 13);
-            this.labelLastName.TabIndex = 3;
-            this.labelLastName.Text = "Отчество";
-            // 
-            // labelPhone
-            // 
-            this.labelPhone.AutoSize = true;
-            this.labelPhone.Location = new System.Drawing.Point(32, 267);
-            this.labelPhone.Name = "labelPhone";
-            this.labelPhone.Size = new System.Drawing.Size(52, 13);
-            this.labelPhone.TabIndex = 4;
-            this.labelPhone.Text = "Телефон";
-            // 
-            // labelAddress
-            // 
-            this.labelAddress.AutoSize = true;
-            this.labelAddress.Location = new System.Drawing.Point(32, 336);
-            this.labelAddress.Name = "labelAddress";
-            this.labelAddress.Size = new System.Drawing.Size(38, 13);
-            this.labelAddress.TabIndex = 5;
-            this.labelAddress.Text = "Адрес";
-            // 
-            // textBoxFirstName
-            // 
-            this.textBoxFirstName.Location = new System.Drawing.Point(35, 77);
-            this.textBoxFirstName.Name = "textBoxFirstName";
-            this.textBoxFirstName.Size = new System.Drawing.Size(135, 20);
-            this.textBoxFirstName.TabIndex = 6;
-            // 
-            // textBoxMiddleName
-            // 
-            this.textBoxMiddleName.Location = new System.Drawing.Point(35, 146);
-            this.textBoxMiddleName.Name = "textBoxMiddleName";
-            this.textBoxMiddleName.Size = new System.Drawing.Size(135, 20);
-            this.textBoxMiddleName.TabIndex = 7;
-            // 
-            // textBoxLastName
-            // 
-            this.textBoxLastName.Location = new System.Drawing.Point(35, 212);
-            this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.Size = new System.Drawing.Size(135, 20);
-            this.textBoxLastName.TabIndex = 8;
-            // 
-            // textBoxPhone
-            // 
-            this.textBoxPhone.Location = new System.Drawing.Point(35, 283);
-            this.textBoxPhone.Name = "textBoxPhone";
-            this.textBoxPhone.Size = new System.Drawing.Size(135, 20);
-            this.textBoxPhone.TabIndex = 9;
-            // 
-            // textBoxAddress
-            // 
-            this.textBoxAddress.Location = new System.Drawing.Point(35, 352);
-            this.textBoxAddress.Name = "textBoxAddress";
-            this.textBoxAddress.Size = new System.Drawing.Size(135, 20);
-            this.textBoxAddress.TabIndex = 10;
+            this.listViewClient.SelectedIndexChanged += new System.EventHandler(this.listViewClient_SelectedIndexChanged);
             // 
             // id
             // 
@@ -180,32 +101,115 @@
             this.Адрес.Text = "Адрес";
             this.Адрес.Width = 150;
             // 
+            // labelFirstName
+            // 
+            this.labelFirstName.AutoSize = true;
+            this.labelFirstName.Location = new System.Drawing.Point(34, 23);
+            this.labelFirstName.Name = "labelFirstName";
+            this.labelFirstName.Size = new System.Drawing.Size(29, 13);
+            this.labelFirstName.TabIndex = 1;
+            this.labelFirstName.Text = "Имя";
+            // 
+            // labelMiddleName
+            // 
+            this.labelMiddleName.AutoSize = true;
+            this.labelMiddleName.Location = new System.Drawing.Point(34, 92);
+            this.labelMiddleName.Name = "labelMiddleName";
+            this.labelMiddleName.Size = new System.Drawing.Size(56, 13);
+            this.labelMiddleName.TabIndex = 2;
+            this.labelMiddleName.Text = "Фамилия";
+            // 
+            // labelLastName
+            // 
+            this.labelLastName.AutoSize = true;
+            this.labelLastName.Location = new System.Drawing.Point(36, 158);
+            this.labelLastName.Name = "labelLastName";
+            this.labelLastName.Size = new System.Drawing.Size(54, 13);
+            this.labelLastName.TabIndex = 3;
+            this.labelLastName.Text = "Отчество";
+            // 
+            // labelPhone
+            // 
+            this.labelPhone.AutoSize = true;
+            this.labelPhone.Location = new System.Drawing.Point(34, 229);
+            this.labelPhone.Name = "labelPhone";
+            this.labelPhone.Size = new System.Drawing.Size(52, 13);
+            this.labelPhone.TabIndex = 4;
+            this.labelPhone.Text = "Телефон";
+            // 
+            // labelAddress
+            // 
+            this.labelAddress.AutoSize = true;
+            this.labelAddress.Location = new System.Drawing.Point(34, 298);
+            this.labelAddress.Name = "labelAddress";
+            this.labelAddress.Size = new System.Drawing.Size(38, 13);
+            this.labelAddress.TabIndex = 5;
+            this.labelAddress.Text = "Адрес";
+            // 
+            // textBoxFirstName
+            // 
+            this.textBoxFirstName.Location = new System.Drawing.Point(37, 39);
+            this.textBoxFirstName.Name = "textBoxFirstName";
+            this.textBoxFirstName.Size = new System.Drawing.Size(135, 20);
+            this.textBoxFirstName.TabIndex = 6;
+            // 
+            // textBoxMiddleName
+            // 
+            this.textBoxMiddleName.Location = new System.Drawing.Point(37, 108);
+            this.textBoxMiddleName.Name = "textBoxMiddleName";
+            this.textBoxMiddleName.Size = new System.Drawing.Size(135, 20);
+            this.textBoxMiddleName.TabIndex = 7;
+            // 
+            // textBoxLastName
+            // 
+            this.textBoxLastName.Location = new System.Drawing.Point(37, 174);
+            this.textBoxLastName.Name = "textBoxLastName";
+            this.textBoxLastName.Size = new System.Drawing.Size(135, 20);
+            this.textBoxLastName.TabIndex = 8;
+            // 
+            // textBoxPhone
+            // 
+            this.textBoxPhone.Location = new System.Drawing.Point(37, 245);
+            this.textBoxPhone.Name = "textBoxPhone";
+            this.textBoxPhone.Size = new System.Drawing.Size(135, 20);
+            this.textBoxPhone.TabIndex = 9;
+            // 
+            // textBoxAddress
+            // 
+            this.textBoxAddress.Location = new System.Drawing.Point(37, 314);
+            this.textBoxAddress.Name = "textBoxAddress";
+            this.textBoxAddress.Size = new System.Drawing.Size(135, 20);
+            this.textBoxAddress.TabIndex = 10;
+            // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(425, 390);
+            this.buttonAdd.Location = new System.Drawing.Point(427, 390);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(120, 48);
             this.buttonAdd.TabIndex = 11;
             this.buttonAdd.Text = "Создать";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(551, 390);
+            this.buttonEdit.Location = new System.Drawing.Point(553, 390);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(120, 48);
             this.buttonEdit.TabIndex = 12;
             this.buttonEdit.Text = "Изменить";
             this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // buttonDel
             // 
-            this.buttonDel.Location = new System.Drawing.Point(677, 390);
+            this.buttonDel.Location = new System.Drawing.Point(679, 390);
             this.buttonDel.Name = "buttonDel";
             this.buttonDel.Size = new System.Drawing.Size(120, 48);
             this.buttonDel.TabIndex = 13;
             this.buttonDel.Text = "Удалить";
             this.buttonDel.UseVisualStyleBackColor = true;
+            this.buttonDel.Click += new System.EventHandler(this.buttonDel_Click);
             // 
             // FormClient
             // 

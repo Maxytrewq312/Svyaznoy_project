@@ -41,9 +41,9 @@
             this.buttonClient.BackColor = System.Drawing.Color.Silver;
             this.buttonClient.FlatAppearance.BorderSize = 0;
             this.buttonClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClient.Location = new System.Drawing.Point(12, 232);
+            this.buttonClient.Location = new System.Drawing.Point(12, 171);
             this.buttonClient.Name = "buttonClient";
-            this.buttonClient.Size = new System.Drawing.Size(300, 48);
+            this.buttonClient.Size = new System.Drawing.Size(399, 48);
             this.buttonClient.TabIndex = 0;
             this.buttonClient.Text = "Клиент";
             this.buttonClient.UseVisualStyleBackColor = false;
@@ -54,7 +54,7 @@
             this.buttonSotr.BackColor = System.Drawing.Color.Silver;
             this.buttonSotr.FlatAppearance.BorderSize = 0;
             this.buttonSotr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSotr.Location = new System.Drawing.Point(12, 332);
+            this.buttonSotr.Location = new System.Drawing.Point(12, 259);
             this.buttonSotr.Name = "buttonSotr";
             this.buttonSotr.Size = new System.Drawing.Size(399, 48);
             this.buttonSotr.TabIndex = 1;
@@ -67,7 +67,7 @@
             this.buttonSell.BackColor = System.Drawing.Color.Silver;
             this.buttonSell.FlatAppearance.BorderSize = 0;
             this.buttonSell.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSell.Location = new System.Drawing.Point(12, 432);
+            this.buttonSell.Location = new System.Drawing.Point(12, 352);
             this.buttonSell.Name = "buttonSell";
             this.buttonSell.Size = new System.Drawing.Size(399, 48);
             this.buttonSell.TabIndex = 2;
@@ -80,7 +80,7 @@
             this.buttonConsult.BackColor = System.Drawing.Color.Silver;
             this.buttonConsult.FlatAppearance.BorderSize = 0;
             this.buttonConsult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonConsult.Location = new System.Drawing.Point(12, 532);
+            this.buttonConsult.Location = new System.Drawing.Point(12, 437);
             this.buttonConsult.Name = "buttonConsult";
             this.buttonConsult.Size = new System.Drawing.Size(399, 48);
             this.buttonConsult.TabIndex = 3;
@@ -91,9 +91,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Svyaznoy_project.Properties.Resources.kisspng_logo_brand_font_product_clip_art_svyaznoy_list_apps_5bf007bc2a6019_5261498615424572761736;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 67);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 27);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(365, 75);
+            this.pictureBox1.Size = new System.Drawing.Size(399, 75);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
@@ -103,7 +103,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.GreenYellow;
-            this.ClientSize = new System.Drawing.Size(423, 624);
+            this.ClientSize = new System.Drawing.Size(423, 527);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonConsult);
             this.Controls.Add(this.buttonSell);

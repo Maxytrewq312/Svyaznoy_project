@@ -17,8 +17,10 @@ namespace Svyaznoy_project
         public int Id { get; set; }
         public int IdClient { get; set; }
         public int IdSotrudnik { get; set; }
-        public string Tovar { get; set; }
-        public string TypeTovar { get; set; }
+        public int TypeTovar { get; set; }
+        public string ModelMobile { get; set; }
+        public string NameAcsess { get; set; }
+        public string NameOper { get; set; }
         public int Price { get; set; }
         public Nullable<int> Garant { get; set; }
     

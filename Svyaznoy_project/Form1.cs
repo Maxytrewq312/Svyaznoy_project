@@ -23,23 +23,26 @@ namespace Svyaznoy_project
 
         private void buttonClient_Click(object sender, EventArgs e)
         {
-
+            Form formClient = new FormClient();
+            formClient.Show();
         }
 
         private void buttonSotr_Click(object sender, EventArgs e)
         {
-
+            Form formSotr = new FormSotrudnik();
+            formSotr.Show();
         }
 
         private void buttonSell_Click(object sender, EventArgs e)
         {
-
+            Form formSell = new FormSell();
+            formSell.Show();
         }
 
         private void buttonConsult_Click(object sender, EventArgs e)
         {
-            Form formClient = new FormClient();
-            formClient.Show();
+            Form formConsult = new FormConsult();
+            formConsult.Show();
         }
     }
 }
