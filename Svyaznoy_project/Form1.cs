@@ -9,11 +9,12 @@ using System.Windows.Forms;
 
 namespace Svyaznoy_project
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
-        public Form1()
+        public Main()
         {
             InitializeComponent();
+            labelprivet.Text = "Здравствуй, " + FormAutorization.autom.login + "!";
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

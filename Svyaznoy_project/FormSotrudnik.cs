@@ -14,7 +14,8 @@ namespace Svyaznoy_project
     {
         public FormSotrudnik()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            ShowSotrMethod();
         }
         void ShowSotrMethod()
         {

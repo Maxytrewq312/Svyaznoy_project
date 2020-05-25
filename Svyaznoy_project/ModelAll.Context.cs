@@ -13,10 +13,10 @@ namespace Svyaznoy_project
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Svyaznoy_projectEntities2 : DbContext
+    public partial class Svyaznoy_projectEntities4 : DbContext
     {
-        public Svyaznoy_projectEntities2()
-            : base("name=Svyaznoy_projectEntities2")
+        public Svyaznoy_projectEntities4()
+            : base("name=Svyaznoy_projectEntities4")
         {
         }
     
@@ -25,6 +25,7 @@ namespace Svyaznoy_project
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Autorization> Autorization { get; set; }
         public virtual DbSet<ClientSet> ClientSet { get; set; }
         public virtual DbSet<ConsultSet> ConsultSet { get; set; }
         public virtual DbSet<SellsSet> SellsSet { get; set; }

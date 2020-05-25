@@ -12,17 +12,11 @@ namespace Svyaznoy_project
     using System;
     using System.Collections.Generic;
     
-    public partial class ConsultSet
+    public partial class Autorization
     {
         public int Id { get; set; }
-        public int IdClient { get; set; }
-        public int IdSotrudnik { get; set; }
-        public Nullable<int> TypeConsult { get; set; }
-        public string MobileConsult { get; set; }
-        public string AcsessConsult { get; set; }
-        public string OperConsult { get; set; }
-    
-        public virtual ClientSet ClientSet { get; set; }
-        public virtual SotrudnikSet SotrudnikSet { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public string TypeUser { get; set; }
     }
 }

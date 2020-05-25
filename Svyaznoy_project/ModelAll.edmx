@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище Svyaznoy_projectModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Autorization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TypeUser" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="ClientSet">
           <Key>
             <PropertyRef Name="Id" />
@@ -23,7 +32,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdClient" Type="int" Nullable="false" />
           <Property Name="IdSotrudnik" Type="int" Nullable="false" />
-          <Property Name="TypeConsult" Type="nvarchar(max)" />
+          <Property Name="TypeConsult" Type="int" />
           <Property Name="MobileConsult" Type="nvarchar(max)" />
           <Property Name="AcsessConsult" Type="nvarchar(max)" />
           <Property Name="OperConsult" Type="nvarchar(max)" />
@@ -101,6 +110,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище Svyaznoy_projectModelContainer">
+          <EntitySet Name="Autorization" EntityType="Self.Autorization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClientSet" EntityType="Self.ClientSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ConsultSet" EntityType="Self.ConsultSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SellsSet" EntityType="Self.SellsSet" Schema="dbo" store:Type="Tables" />
@@ -127,6 +137,15 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Svyaznoy_projectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Autorization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <EntityType Name="ClientSet">
           <Key>
             <PropertyRef Name="Id" />
@@ -147,7 +166,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdClient" Type="Int32" Nullable="false" />
           <Property Name="IdSotrudnik" Type="Int32" Nullable="false" />
-          <Property Name="TypeConsult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TypeConsult" Type="Int32" />
           <Property Name="MobileConsult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AcsessConsult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="OperConsult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -230,7 +249,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Svyaznoy_projectEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Svyaznoy_projectEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Autorization" EntityType="Self.Autorization" />
           <EntitySet Name="ClientSet" EntityType="Self.ClientSet" />
           <EntitySet Name="ConsultSet" EntityType="Self.ConsultSet" />
           <EntitySet Name="SellsSet" EntityType="Self.SellsSet" />
@@ -257,7 +277,17 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище Svyaznoy_projectModelContainer" CdmEntityContainer="Svyaznoy_projectEntities2">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Svyaznoy_projectModelContainer" CdmEntityContainer="Svyaznoy_projectEntities4">
+          <EntitySetMapping Name="Autorization">
+            <EntityTypeMapping TypeName="Svyaznoy_projectModel.Autorization">
+              <MappingFragment StoreEntitySet="Autorization">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="TypeUser" ColumnName="TypeUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ClientSet">
             <EntityTypeMapping TypeName="Svyaznoy_projectModel.ClientSet">
               <MappingFragment StoreEntitySet="ClientSet">

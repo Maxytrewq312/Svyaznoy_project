@@ -8,7 +8,7 @@ namespace Svyaznoy_project
 {
     static class Program
     {
-        public static Svyaznoy_projectEntities2 SpDb = new Svyaznoy_projectEntities2();
+        public static Svyaznoy_projectEntities4 SpDb = new Svyaznoy_projectEntities4();
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -17,7 +17,7 @@ namespace Svyaznoy_project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FormAutorization());
         }
     }
 }

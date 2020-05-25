@@ -30,7 +30,7 @@ namespace Svyaznoy_project
             comboBoxClient.Items.Clear();
             foreach (ClientSet client in Program.SpDb.ClientSet)
             {
-                string[] item = { client.Id.ToString() + ".", client.MiddleName};
+                string[] item = {client.Id.ToString() + ".", client.MiddleName};
                 comboBoxClient.Items.Add(string.Join(" ", item));
             }
         }
@@ -41,60 +41,6 @@ namespace Svyaznoy_project
             {
                 string[] item = {sotr.Id.ToString() + ".", sotr.MiddleName};
                 comboBoxSotr.Items.Add(string.Join(" ", item));
-            }
-        }
-        void ShowSellsSet()
-        {
-            listViewMobile.Items.Clear();
-            listViewAcsess.Items.Clear();
-            listViewOper.Items.Clear();
-            foreach (SellsSet sell in Program.SpDb.SellsSet)
-            {
-                if (sell.TypeTovar == 0)
-                {
-                    ListViewItem item = new ListViewItem(new string[]
-                    {
-                    sell.IdClient.ToString(),
-                    sell.ClientSet.MiddleName+ " ",
-                    sell.IdSotrudnik.ToString(),
-                    sell.SotrudnikSet.MiddleName + " ",
-                    sell.Price.ToString(),
-                    sell.Garant.ToString(),
-                    sell.ModelMobile.ToString()
-                    });
-                    item.Tag = sell;
-                    listViewMobile.Items.Add(item);
-                }
-                else if (sell.TypeTovar == 1)
-                {
-                    ListViewItem item = new ListViewItem(new string[]
-                    {
-                    sell.IdClient.ToString(),
-                    sell.ClientSet.MiddleName+ " ",
-                    sell.IdSotrudnik.ToString(),
-                    sell.SotrudnikSet.MiddleName + " ",
-                    sell.Price.ToString(),
-                    sell.Garant.ToString(),
-                    sell.NameAcsess.ToString()
-                    });
-                    item.Tag = sell;
-                    listViewAcsess.Items.Add(item);
-                }
-                else
-                {
-                    ListViewItem item = new ListViewItem(new string[]
-                    {
-                    sell.IdClient.ToString(),
-                    sell.ClientSet.MiddleName+ " ",
-                    sell.IdSotrudnik.ToString(),
-                    sell.SotrudnikSet.MiddleName + " ",
-                    sell.Price.ToString(),
-                    sell.Garant.ToString(),
-                    sell.NameOper.ToString()
-                    });
-                    item.Tag = sell;
-                    listViewOper.Items.Add(item);
-                }
             }
         }
 
@@ -154,7 +100,6 @@ namespace Svyaznoy_project
                 comboBoxClient.Text = null;
                 comboBoxSotr.Text = null;
                 textBoxPrice.Text = "";
-                textBoxGarant.Text = "";
                 textBoxNameOper.Text = "";
             }
         }
@@ -162,26 +107,28 @@ namespace Svyaznoy_project
         private void buttonAdd_Click(object sender, EventArgs e)
         {
 
-            if (comboBoxClient.SelectedItem != null && comboBoxSotr.SelectedItem != null && textBoxPrice.Text != "" && textBoxGarant.Text != "")
+            if (comboBoxClient.SelectedItem != null && comboBoxSotr.SelectedItem != null && textBoxPrice.Text != "")
             {
                 SellsSet sell = new SellsSet();
                 sell.IdClient = Convert.ToInt32(comboBoxClient.SelectedItem.ToString().Split('.')[0]);
                 sell.IdSotrudnik = Convert.ToInt32(comboBoxSotr.SelectedItem.ToString().Split('.')[0]);
                 sell.Price = Convert.ToInt32(textBoxPrice.Text);
-                sell.Garant = Convert.ToInt32(textBoxGarant.Text);
                 if (comboBoxVidTovar.SelectedIndex == 0)
                 {
                     sell.TypeTovar = 0;
+                    sell.Garant = Convert.ToInt32(textBoxGarant.Text);
                     sell.ModelMobile = Convert.ToString(textBoxModelMobile.Text);
                 }
                 else if (comboBoxVidTovar.SelectedIndex == 1)
                 {
                     sell.TypeTovar = 1;
+                    sell.Garant = Convert.ToInt32(textBoxGarant.Text);
                     sell.NameAcsess = Convert.ToString(textBoxNameAcsess.Text);
                 }
                 else
                 {
                     sell.TypeTovar = 2;
+                    sell.NameOper = Convert.ToString(textBoxNameOper);
                 }
                 Program.SpDb.SellsSet.Add(sell);
                 Program.SpDb.SaveChanges();
@@ -195,12 +142,102 @@ namespace Svyaznoy_project
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-
+            if (comboBoxVidTovar.SelectedIndex == 0)
+            {
+                if (listViewMobile.SelectedItems.Count == 1)
+                {
+                    SellsSet sell = listViewMobile.SelectedItems[0].Tag as SellsSet;
+                    sell.IdSotrudnik = Convert.ToInt32(comboBoxSotr.SelectedItem.ToString().Split('.')[0]);
+                    sell.IdClient = Convert.ToInt32(comboBoxClient.SelectedItem.ToString().Split('.')[0]);
+                    sell.Price = Convert.ToInt32(textBoxPrice.Text);
+                    sell.Garant = Convert.ToInt32(textBoxGarant.Text);
+                    sell.ModelMobile = Convert.ToString(textBoxModelMobile.Text);
+                    Program.SpDb.SaveChanges();
+                    ShowSellsSet();
+                }
+            }
+            if (comboBoxVidTovar.SelectedIndex == 1)
+            {
+                if (listViewMobile.SelectedItems.Count == 1)
+                {
+                    SellsSet sell = listViewMobile.SelectedItems[0].Tag as SellsSet;
+                    sell.IdSotrudnik = Convert.ToInt32(comboBoxSotr.SelectedItem.ToString().Split('.')[0]);
+                    sell.IdClient = Convert.ToInt32(comboBoxClient.SelectedItem.ToString().Split('.')[0]);
+                    sell.Price = Convert.ToInt32(textBoxPrice.Text);
+                    sell.Garant = Convert.ToInt32(textBoxGarant.Text);
+                    sell.NameAcsess = Convert.ToString(textBoxNameAcsess.Text);
+                    Program.SpDb.SaveChanges();
+                    ShowSellsSet();
+                }
+            }
+            else 
+            {
+                if (listViewMobile.SelectedItems.Count == 1)
+                {
+                    SellsSet sell = listViewMobile.SelectedItems[0].Tag as SellsSet;
+                    sell.IdSotrudnik = Convert.ToInt32(comboBoxSotr.SelectedItem.ToString().Split('.')[0]);
+                    sell.IdClient = Convert.ToInt32(comboBoxClient.SelectedItem.ToString().Split('.')[0]);
+                    sell.Price = Convert.ToInt32(textBoxPrice.Text);
+                    sell.NameOper = Convert.ToString(textBoxNameOper.Text);
+                    Program.SpDb.SaveChanges();
+                    ShowSellsSet();
+                }
+            }
         }
 
         private void buttonDel_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (comboBoxVidTovar.SelectedIndex == 0)
+                {
+                    if (listViewMobile.SelectedItems.Count == 1)
+                    {
+                        SellsSet sell = listViewMobile.SelectedItems[0].Tag as SellsSet;
+                        Program.SpDb.SellsSet.Remove(sell);
+                        Program.SpDb.SaveChanges();
+                        ShowSellsSet();
+                    }
+                    comboBoxSotr.SelectedItem = null;
+                    comboBoxClient.SelectedItem = null;
+                    textBoxPrice.Text = "";
+                    textBoxGarant.Text = "";
+                    textBoxModelMobile.Text = "";
+                }
+                else if (comboBoxVidTovar.SelectedIndex == 1)
+                {
+                    if (listViewAcsess.SelectedItems.Count == 1)
+                    {
+                        SellsSet sell = listViewAcsess.SelectedItems[0].Tag as SellsSet;
+                        Program.SpDb.SellsSet.Remove(sell);
+                        Program.SpDb.SaveChanges();
+                        ShowSellsSet();
+                    }
+                    comboBoxSotr.SelectedItem = null;
+                    comboBoxClient.SelectedItem = null;
+                    textBoxPrice.Text = "";
+                    textBoxGarant.Text = "";
+                    textBoxNameAcsess.Text = "";
+                }
+                else
+                {
+                    if (listViewOper.SelectedItems.Count == 1)
+                    {
+                        SellsSet sell = listViewOper.SelectedItems[0].Tag as SellsSet;
+                        Program.SpDb.SellsSet.Remove(sell);
+                        Program.SpDb.SaveChanges();
+                        ShowSellsSet();
+                    }
+                    comboBoxSotr.SelectedItem = null;
+                    comboBoxClient.SelectedItem = null;
+                    textBoxPrice.Text = "";
+                    textBoxNameOper.Text = "";
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Невозможно удалить, эта запись используется!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void listViewMobile_SelectedIndexChanged(object sender, EventArgs e)
@@ -264,6 +301,62 @@ namespace Svyaznoy_project
                 textBoxGarant.Text = "";
                 textBoxNameOper.Text = "";
             }
+        }
+        void ShowSellsSet()
+        {
+            listViewMobile.Items.Clear();
+            listViewAcsess.Items.Clear();
+            listViewOper.Items.Clear();
+            foreach (SellsSet sell in Program.SpDb.SellsSet)
+            {
+                if (sell.TypeTovar == 0)
+                {
+                    ListViewItem item = new ListViewItem(new string[]
+                    {
+                    sell.IdClient.ToString(),
+                    sell.ClientSet.MiddleName + " ",
+                    sell.IdSotrudnik.ToString(),
+                    sell.SotrudnikSet.MiddleName + " ",
+                    sell.Price.ToString(),
+                    sell.Garant.ToString(),
+                    sell.ModelMobile.ToString()
+                    });
+                    item.Tag = sell;
+                    listViewMobile.Items.Add(item);
+                }
+                else if (sell.TypeTovar == 1)
+                {
+                    ListViewItem item = new ListViewItem(new string[]
+                    {
+                    sell.IdClient.ToString(),
+                    sell.ClientSet.MiddleName + " ",
+                    sell.IdSotrudnik.ToString(),
+                    sell.SotrudnikSet.MiddleName + " ",
+                    sell.Price.ToString(),
+                    sell.Garant.ToString(),
+                    sell.NameAcsess.ToString()
+                    });
+                    item.Tag = sell;
+                    listViewAcsess.Items.Add(item);
+                }
+                else
+                {
+                    ListViewItem item = new ListViewItem(new string[]
+                    {
+                    sell.IdClient.ToString(),
+                    sell.ClientSet.MiddleName + " ",
+                    sell.IdSotrudnik.ToString(),
+                    sell.SotrudnikSet.MiddleName + " ",
+                    sell.Price.ToString(),
+                    sell.NameOper.ToString()
+                    });
+                    item.Tag = sell;
+                    listViewOper.Items.Add(item);
+                }
+            }
+            listViewMobile.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            listViewAcsess.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            listViewOper.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
     }
 }
